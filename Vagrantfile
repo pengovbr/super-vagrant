@@ -121,11 +121,12 @@ WSDL de integração do SEI ..... [SEI]/ws/SeiWS.php
 PHP Info ...................... http://localhost:8000/info.php
 
 = Outros Serviços ========================================================
-Solr .......................... http://localhost:8983/solr
-MailCatcher ................... http://localhost:1080
 Mysql ......................... localhost:3306
 Oracle ........................ localhost:1521
 SQLServer ..................... localhost:1433
+PostgreSQL .................... localhost:5432
+Solr .......................... http://localhost:8983/solr
+MailCatcher ................... http://localhost:1080
 
 = Comandos Úteis =========================================================
 vagrant up                        - Inicializar ambiente do SEI

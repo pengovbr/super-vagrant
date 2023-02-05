@@ -1,17 +1,17 @@
 version: '2'
 services:
   jod:  
-    image: processoeletronico/vagrant_sei4_jod:${ENVIRONMENT_VERSION}
+    image: processoeletronico/vagrant_super4_jod:${ENVIRONMENT_VERSION}
     container_name: jod
 
   smtp:
-    image: processoeletronico/vagrant_sei4_mailcatcher:${ENVIRONMENT_VERSION}
+    image: processoeletronico/vagrant_super4_mailcatcher:${ENVIRONMENT_VERSION}
     container_name: smtp
     ports:
       - "1080:1080"
 
   memcached:
-    image: processoeletronico/vagrant_sei4_memcached:${ENVIRONMENT_VERSION}
+    image: processoeletronico/vagrant_super4_memcached:${ENVIRONMENT_VERSION}
     container_name: memcached
     ports:
       - "11211:11211"
@@ -20,22 +20,20 @@ services:
     image: ${DATABASE_IMAGE}:${ENVIRONMENT_VERSION}
     container_name: ${DATABASE_HOST}
     restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: P@ssword
     volumes:
-      - ${DATABASE_HOST}:${DATABASE_DATA_DIR}
+      - ${DATABASE_TYPE}:${DATABASE_DATA_DIR}
       - /var/sei/backup/${DATABASE_HOST}:/backup
     ports:
       - ${DATABASE_PORT}:${DATABASE_PORT}
 
   solr:
-    image: processoeletronico/vagrant_sei4_solr:${ENVIRONMENT_VERSION}
+    image: processoeletronico/vagrant_super4_solr:${ENVIRONMENT_VERSION}
     container_name: solr
     ports:
       - "8983:8983"
 
   httpd:
-    image: processoeletronico/vagrant_sei4_httpd:${ENVIRONMENT_VERSION}
+    image: processoeletronico/vagrant_super4_httpd:${ENVIRONMENT_VERSION}
     container_name: httpd
     restart: always
     ports:
@@ -48,7 +46,7 @@ services:
       - /mnt/sei/src/infra:/opt/infra
     environment:
       - LANG=pt_BR.ISO-8859-1
-      - XDEBUG_CONFIG="idekey=default client_host=${HOST_IP} client_port=9003 discover_client_host=1"
+      - XDEBUG_CONFIG="idekey=default client_host=host.docker.internal client_port=9003 discover_client_host=1"
       - XDEBUG_SESSION=default
       - XDEBUG_MODE=debug
       - HOST_URL=http://localhost:8000
@@ -76,8 +74,8 @@ services:
       - smtp:smtp
       - jod:jod
 
-
 volumes:
-  mysql:
-  oracle:
-  sqlserver:
+  MySql:
+  Oracle:
+  SqlServer:
+  PostgreSql:

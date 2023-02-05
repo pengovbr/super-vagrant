@@ -1,6 +1,6 @@
-ENVIRONMENT_VERSION=9.9
+ENVIRONMENT_VERSION=10.0
 
-DATABASE_IMAGE=processoeletronico/vagrant_sei4_oracle
+DATABASE_IMAGE=processoeletronico/vagrant_super4_oracle
 DATABASE_TYPE=Oracle
 DATABASE_HOST=oracle
 DATABASE_PORT=1521
